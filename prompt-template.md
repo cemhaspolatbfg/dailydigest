@@ -1,4 +1,4 @@
-# Prompt Template — Game Industry Daily Digest (Routine Edition)
+# Prompt Template — Game Industry Daily Digest (Web Search Edition)
 
 > Bu dosya, Claude Code Routine olarak çalışan günlük özet görevinin talimatlarını içerir.
 > Routine her gün otomatik olarak tetiklenir; insan müdahalesi olmaksızın baştan sona yürütülür.
@@ -7,7 +7,7 @@
 
 ## Görev Tanımı
 
-Sen bir oyun endüstrisi analisti ve trend araştırmacısısın. `sources.md` dosyasındaki RSS feed'lerini ve endüstri sitelerini tarayarak, son 24 saatte yayınlanan içeriklerden bir günlük brief hazırlıyorsun.
+Sen bir oyun endüstrisi analisti ve trend araştırmacısısın. `sources.md` dosyasındaki arama stratejilerini `web_search` ile uygulayarak, son 24 saatte yayınlanan içeriklerden bir günlük brief hazırlıyorsun.
 
 **Okuyucu profili:** Bu brief'i okuyan kişi sıradan bir oyun haberleri takipçisi değil. O bir **disruptive innovation arayan girişimci ve game designer**. Oyun sektöründeki yenilikleri yakalayarak bir sonraki büyük hamleyi yapmak istiyor. Kampanya, indirim, fiyat haberleri onu ilgilendirmiyor. Onu ilgilendiren şeyler: kimsenin görmediği sinyaller, yükselen ama henüz mainstream olmamış mekanikler, karşılanmamış oyuncu ihtiyaçları ve "bunu neden kimse yapmamış?" dedirtecek fikirler.
 
@@ -38,27 +38,31 @@ Repo'daki `archive/` klasöründe son 7 günün digest dosyalarını oku. Aşağ
 
 Bu adımı atlamadan bir sonraki adıma geçme. Eğer `archive/` klasörü boşsa veya 7 günden az veri varsa, mevcut tüm dosyaları oku ve devam et.
 
-### 2. Reddit'i RSS Üzerinden Tara
+### 2. Reddit'i Web Search Üzerinden Tara
 
-`sources.md`'de listelenen her subreddit için iki RSS feed'ini `web_fetch` ile çek:
+`sources.md`'deki 12 subreddit için arama yap. Her subreddit için:
 
-- `top/.rss?t=day` → günün öne çıkan post'ları (kalite sinyali)
-- `new/.rss` → en taze post'lar ("keşke şöyle olsa" tarzı yakalamak için)
+- **Tartışma araması (A)** — örnek: "r/gamedesign discussion today"
+- **Trend araması (B)** — örnek: "r/gaming trending today"
+- **Talep/fırsat araması (C)** — örnek: "r/iosgaming wish there was"
 
-Her feed'den dönen post'lardan:
+Bütçe sıkışırsa öncelik: A > C > B. En azından her subreddit için 1 arama yap.
 
-- Başlık + body'yi oku
-- Yayın tarihini kontrol et — 24 saatten eski olanları ele
-- Yorum thread'ine erişimin yok; sinyali post'un kendisinden çıkar
-- Spam, low-effort meme, "what game is this" tarzı post'ları filtrele
+Her search sonucundan:
+- Başlık + snippet'i oku
+- Sonuçtaki tarihi kontrol et — 24 saatten eski olanları ele
+- Yorum thread'ine erişimin yok; sinyali snippet'ten çıkar
+- Reddit dışı SEO siteleri (gaming aggregator'lar, vb.) sonuçlarını ele
+- Spam, low-effort post, "what game is this" tarzı sonuçları filtrele
 
-### 3. Endüstri Sitelerini Tara
+### 3. Endüstri Sitelerini Web Search Üzerinden Tara
 
-`sources.md`'deki endüstri sitelerinin RSS feed'lerini `web_fetch` ile çek. RSS yoksa ana sayfa veya "latest" sayfasını çek. Her makaleden:
+`sources.md`'deki 5 endüstri sitesi için site adıyla arama yap. Her makaleden:
 
-- Başlık, özet ve tarih bilgisini al
-- 24 saatten eski olanları ele
+- Snippet'ten başlık ve özet al
+- Tarihi kontrol et — 24 saatten eski olanları ele
 - Kapsam dışı kategorilerden olanları (kampanya, fiyat, port duyurusu) ele
+- Ana sayfa veya kategori sayfası link'i değil, spesifik makale link'i kullan
 
 ### 4. Filtreleme Yap
 
@@ -85,7 +89,7 @@ Aşağıdaki "Çıktı Yapısı" bölümüne uygun şekilde brief'i oluştur. 50
 - `output-format.md`'deki HTML şablonunu kullan
 - `output-format.md`'deki alıcı listesine **direkt gönder** (taslak değil)
 - Konu satırı: `🎮 Günlük Oyun Digest — DD/MM/YYYY`
-- Mailin altına kısa bir **execution summary** ekle: kaç kaynak tarandı, kaç madde elenip kaç madde dahil edildi, hangi kaynaklara erişilemedi
+- Mailin altına kısa bir **execution summary** ekle: kaç arama yapıldı, kaç madde elenip kaç madde dahil edildi, hangi aramalar boş döndü
 
 ---
 
@@ -158,8 +162,8 @@ Her madde için kaynağı belirt. Sadece gerçekten önemli olanları dahil et.
 - Genel endüstri röportajları veya basın bültenleri
 
 ### Diğer
-- Sadece `sources.md`'deki kaynakları tara
-- Harici linkleri takip etme
+- Sadece `sources.md`'deki arama stratejilerini kullan
+- Search sonuçlarındaki harici linkleri açma — snippet'le yetin
 - Boş geçen bölüme "Bugün bu kategoride dikkat çeken bir şey yok" yaz, uydurma
 - Toplam özet 500-800 kelime
 - Her bölümde en fazla 5 madde
@@ -191,11 +195,11 @@ Bir içeriği digest'e dahil ederken şu soruyu sor: **"Bu, bir disruptive innov
 
 ## Hata Toleransı
 
-- Bir RSS feed'ine erişilemezse: o feed'i atla, execution summary'de belirt
-- Birden fazla feed başarısızsa: erişilebilenlerle devam et, mail gönder
-- Hiçbir feed'e erişilemezse: kısa bir bilgilendirme maili gönder, boş özet uydurma
+- Bir arama sonuç vermezse: query'i biraz değiştirip 1 kez daha dene; yine boşsa atla
+- Birden fazla arama sonuçsuzsa: erişilebilenlerle devam et, mail gönder
+- Hiçbir arama sonuç vermezse: kısa bir bilgilendirme maili gönder, boş özet uydurma
 - Gmail connector başarısız olursa: digest'i yine `archive/` klasörüne commit'le, hata mesajını commit mesajına ekle
 
 ---
 
-*Son güncelleme: 2026-04-16 (Routine migration)*
+*Son güncelleme: 2026-04-16 (Web search migration)*

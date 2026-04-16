@@ -1,4 +1,4 @@
-# Output Format — Game Industry Daily Digest (Routine Edition)
+# Output Format — Game Industry Daily Digest (Web Search Edition)
 
 > Bu dosya, Claude'un hazırladığı günlük özetin nasıl ve kime iletileceğini tanımlar.
 > Routine olarak çalıştığı için mail **doğrudan gönderilir** (taslak değil).
@@ -73,9 +73,9 @@ Aşağıdaki şablonu kullan. Köşeli parantez içindeki yer tutucuları içeri
 
   <p style="color: #888; font-size: 12px;">
     <strong>Execution Summary:</strong><br>
-    Taranan kaynak: [N] RSS feed + [M] endüstri sitesi<br>
+    Yapılan arama: [N] Reddit query + [M] endüstri site query<br>
     Toplanan ham madde: [X] · Elenen: [Y] · Dahil edilen: [Z]<br>
-    Erişilemeyen kaynaklar: [varsa liste, yoksa "yok"]<br>
+    Sonuçsuz aramalar: [varsa liste, yoksa "yok"]<br>
     Çalışma süresi: [routine'in toplam süresi]
   </p>
 
@@ -85,9 +85,9 @@ Aşağıdaki şablonu kullan. Köşeli parantez içindeki yer tutucuları içeri
 ### Link Kuralları
 
 - Kaynak isimleri **tıklanabilir link** olmalı: `<a href="URL">Kaynak Adı</a>`
-- Doğrudan ilgili post veya makaleye link ver, ana sayfaya değil
+- Search sonucundaki direkt makale veya post URL'ini kullan, ana sayfa değil
 - Link bulunamıyorsa kaynak adını düz metin olarak yaz (`<a>` tag'i kullanma)
-- Reddit linkleri için `https://www.reddit.com/r/...` formatını kullan (RSS'ten dönen `/r/.../comments/...` linki)
+- Reddit linkleri için `https://www.reddit.com/r/...` formatını kullan (search sonucundan alınan URL)
 
 ### Boş Bölüm Kuralı
 
@@ -113,11 +113,11 @@ Asla uydurma içerik ekleme.
 
 ## Hata Durumları
 
-- **Bir kaynağa erişilemezse:** Mail gövdesinde belirtme; execution summary'deki "Erişilemeyen kaynaklar" satırına ekle
-- **Hiçbir kaynağa erişilemezse:** Aşağıdaki bilgilendirme mailini gönder, boş özet uydurma:
+- **Bir arama sonuçsuzsa:** Mail gövdesinde belirtme; execution summary'deki "Sonuçsuz aramalar" satırına ekle
+- **Hiçbir arama sonuç vermezse:** Aşağıdaki bilgilendirme mailini gönder, boş özet uydurma:
 
   ```html
-  <p>⚠️ Bugün hiçbir kaynağa erişilemedi. Lütfen routine loglarını kontrol et.</p>
+  <p>⚠️ Bugün hiçbir kaynaktan içerik alınamadı. Lütfen routine loglarını kontrol et.</p>
   <p>Tarih: [DD/MM/YYYY] · Saat: [HH:MM]</p>
   ```
 
@@ -125,4 +125,4 @@ Asla uydurma içerik ekleme.
 
 ---
 
-*Son güncelleme: 2026-04-16 (Routine migration)*
+*Son güncelleme: 2026-04-16 (Web search migration)*
