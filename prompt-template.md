@@ -21,11 +21,16 @@ Aşağıdaki adımları sırasıyla takip et. Routine olarak çalıştığın i�
 
 ### 1. ARŞİV KONTROLÜ (ZORUNLU İLK ADIM)
 
-Repo'daki `archive/` klasöründe son 7 günün digest dosyalarını oku. Aşağıdaki bilgileri çıkar ve listele:
+`archive/` klasöründeki dosyaları listele. Dosya isimleri `YYYY-MM-DD-digest.md` formatındadır — alfabetik sıralama otomatik olarak tarih sıralaması verir.
 
-- Bahsedilen tüm **oyun isimleri** (örn: Nubby's Number Factory, Warzone Mobile)
-- Bahsedilen tüm **şirket/stüdyo isimleri** (örn: Apple, Activision)
-- Bahsedilen tüm **olaylar ve temalar** (örn: iOS 26 SDK zorunluluğu, konsol fiyat artışları)
+**İşlem:**
+1. Tüm `archive/*.md` dosyalarını alfabetik sırala (en yeni en altta)
+2. **En yeni 7 tanesini seç** — eğer arşivde 7'den fazla dosya varsa, eski olanları YOK SAY
+3. Bu 7 dosyayı oku
+4. Aşağıdaki bilgileri çıkar ve listele:
+   - Bahsedilen tüm **oyun isimleri** (örn: Nubby's Number Factory, Warzone Mobile)
+   - Bahsedilen tüm **şirket/stüdyo isimleri** (örn: Apple, Activision)
+   - Bahsedilen tüm **olaylar ve temalar** (örn: iOS 26 SDK zorunluluğu, konsol fiyat artışları)
 
 **TEKRAR YASAĞI:** Bu listede yer alan herhangi bir oyun, şirket veya olay bugünkü digest'te YENİDEN İŞLENEMEZ. Haberin açısı, aşaması veya detayı farklı olsa bile yasak geçerlidir.
 
@@ -36,7 +41,7 @@ Repo'daki `archive/` klasöründe son 7 günün digest dosyalarını oku. Aşağ
 
 **İSTİSNA:** Sadece gerçekten beklenmedik, önceki haberle çelişen veya sektörü sarsan yeni bir gelişme varsa (örn: "dün kapandığı söylenen stüdyo aslında satın alındı") dahil edilebilir.
 
-Bu adımı atlamadan bir sonraki adıma geçme. Eğer `archive/` klasörü boşsa veya 7 günden az veri varsa, mevcut tüm dosyaları oku ve devam et.
+Bu adımı atlamadan bir sonraki adıma geçme. Eğer arşiv 7 günden az veri içeriyorsa, mevcut tüm dosyaları oku ve devam et.
 
 ### 2. Reddit'i Web Search Üzerinden Tara
 
@@ -77,19 +82,23 @@ Topladığın içerikleri adım 1'deki arşiv listesiyle karşılaştır:
 
 Aşağıdaki "Çıktı Yapısı" bölümüne uygun şekilde brief'i oluştur. 500-800 kelime aralığında tut.
 
-### 6. Arşive Commit'le ve Mail Gönder
+### 6. Arşive Commit'le ve Mail Taslağı Oluştur
 
 İki paralel iş:
 
 **a) Arşive kaydet:**
 - `archive/YYYY-MM-DD-digest.md` dosyası oluştur (Markdown formatında)
+- Aynı tarihli dosya varsa üzerine yaz (rerun normal)
 - Repo'ya commit'le, commit mesajı: `digest: YYYY-MM-DD`
+- Branch policy için wrapper instruction'ına bak (genelde `claude/digest-YYYY-MM-DD` branch'i)
 
-**b) Gmail connector ile mail gönder:**
+**b) Gmail connector ile taslak oluştur:**
 - `output-format.md`'deki HTML şablonunu kullan
-- `output-format.md`'deki alıcı listesine **direkt gönder** (taslak değil)
+- `output-format.md`'deki alıcı listesine **taslak (draft)** olarak hazırla
 - Konu satırı: `🎮 Günlük Oyun Digest — DD/MM/YYYY`
 - Mailin altına kısa bir **execution summary** ekle: kaç arama yapıldı, kaç madde elenip kaç madde dahil edildi, hangi aramalar boş döndü
+
+> Direct send henüz desteklenmiyor — kullanıcı Gmail taslaklara girip Send'e basacak.
 
 ---
 
@@ -196,10 +205,11 @@ Bir içeriği digest'e dahil ederken şu soruyu sor: **"Bu, bir disruptive innov
 ## Hata Toleransı
 
 - Bir arama sonuç vermezse: query'i biraz değiştirip 1 kez daha dene; yine boşsa atla
-- Birden fazla arama sonuçsuzsa: erişilebilenlerle devam et, mail gönder
-- Hiçbir arama sonuç vermezse: kısa bir bilgilendirme maili gönder, boş özet uydurma
-- Gmail connector başarısız olursa: digest'i yine `archive/` klasörüne commit'le, hata mesajını commit mesajına ekle
+- Birden fazla arama sonuçsuzsa: erişilebilenlerle devam et, taslak oluştur
+- Hiçbir arama sonuç vermezse: kısa bir bilgilendirme taslağı oluştur, boş özet uydurma
+- Push conflict olursa: rebase deneme, force push asla yapma; execution summary'de belirt
+- Gmail draft başarısız olursa: digest'i yine `archive/` klasörüne commit'le, hata mesajını commit mesajına ekle
 
 ---
 
-*Son güncelleme: 2026-04-16 (Web search migration)*
+*Son güncelleme: 2026-04-16 (Web search migration + draft mode + archive sort logic)*

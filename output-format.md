@@ -1,20 +1,25 @@
 # Output Format — Game Industry Daily Digest (Web Search Edition)
 
 > Bu dosya, Claude'un hazırladığı günlük özetin nasıl ve kime iletileceğini tanımlar.
-> Routine olarak çalıştığı için mail **doğrudan gönderilir** (taslak değil).
+> Gmail connector şu an sadece **draft (taslak)** oluşturmayı destekliyor;
+> direkt gönderim tool'u henüz expose edilmiş değil.
 
 ---
 
 ## Teslimat Kanalı
 
 - **Kanal:** Gmail connector
-- **Gönderim modu:** Doğrudan gönderim (taslak oluşturma yok)
+- **Gönderim modu:** **Taslak oluştur** (`gmail_create_draft`). Manuel "Send" gerekiyor.
 - **Alıcı 1 (birincil):** cemhaspolat@bugfix.games
 - **Alıcı 2:** ibrahimakcal@bugfix.games
 - **Alıcı 3:** enesgenc@bugfix.games
 - **Konu satırı:** `🎮 Günlük Oyun Digest — DD/MM/YYYY`
 - Sadece yukarıda belirtilen 3 adrese mail gönder, başka alıcı ekleme
 - Üç alıcının da `to` alanında olduğunu doğrula (cc veya bcc kullanma)
+
+> **Not:** Anthropic Gmail connector'a `gmail_send_message` tool'unu eklediğinde
+> bu dosya direct-send moduna geçirilebilir. O zamana kadar her sabah Gmail
+> taslaklara girip Send'e basmak gerekiyor (~5 saniyelik manuel iş).
 
 ---
 
@@ -103,26 +108,27 @@ Asla uydurma içerik ekleme.
 
 ## Arşivleme
 
-- Her gönderilen özeti repo'daki `archive/` klasörüne commit'le
+- Her oluşturulan özeti repo'daki `archive/` klasörüne commit'le
 - Dosya adı formatı: `archive/YYYY-MM-DD-digest.md`
 - Örnek: `archive/2026-04-16-digest.md`
 - Commit mesajı: `digest: YYYY-MM-DD`
 - Arşivdeki dosya **Markdown** formatında olacak (mail HTML, arşiv Markdown — okuma kolaylığı için)
+- Aynı tarihli dosya zaten varsa: üzerine yaz (rerun durumu kabul)
 
 ---
 
 ## Hata Durumları
 
 - **Bir arama sonuçsuzsa:** Mail gövdesinde belirtme; execution summary'deki "Sonuçsuz aramalar" satırına ekle
-- **Hiçbir arama sonuç vermezse:** Aşağıdaki bilgilendirme mailini gönder, boş özet uydurma:
+- **Hiçbir arama sonuç vermezse:** Aşağıdaki bilgilendirme taslağını oluştur, boş özet uydurma:
 
   ```html
   <p>⚠️ Bugün hiçbir kaynaktan içerik alınamadı. Lütfen routine loglarını kontrol et.</p>
   <p>Tarih: [DD/MM/YYYY] · Saat: [HH:MM]</p>
   ```
 
-- **Gmail gönderimi başarısız olursa:** Digest'i yine arşive commit'le. Commit mesajına `(MAIL FAILED: <hata mesajı>)` ekle. Routine bir sonraki manuel kontrolde durumu görsün.
+- **Gmail draft oluşturma başarısız olursa:** Digest'i yine arşive commit'le. Commit mesajına `(DRAFT FAILED: <hata mesajı>)` ekle.
 
 ---
 
-*Son güncelleme: 2026-04-16 (Web search migration)*
+*Son güncelleme: 2026-04-16 (Gmail draft modu — direct send tool yok)*
