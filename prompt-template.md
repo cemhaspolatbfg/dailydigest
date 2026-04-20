@@ -25,9 +25,8 @@ Aşağıdaki adımları sırasıyla takip et. Routine olarak çalıştığın i�
 
 **İşlem:**
 1. Tüm `archive/*.md` dosyalarını alfabetik sırala (en yeni en altta)
-2. **En yeni 7 tanesini seç** — eğer arşivde 7'den fazla dosya varsa, eski olanları YOK SAY
-3. Bu 7 dosyayı oku
-4. Aşağıdaki bilgileri çıkar ve listele:
+2. **Tüm dosyaları oku** — hiçbirini atlama, arşiv boyutu ne olursa olsun; "son 7 gün" kısıtlaması kaldırıldı
+3. Aşağıdaki bilgileri çıkar ve listele:
    - Bahsedilen tüm **oyun isimleri** (örn: Nubby's Number Factory, Warzone Mobile)
    - Bahsedilen tüm **şirket/stüdyo isimleri** (örn: Apple, Activision)
    - Bahsedilen tüm **olaylar ve temalar** (örn: iOS 26 SDK zorunluluğu, konsol fiyat artışları)
@@ -41,7 +40,7 @@ Aşağıdaki adımları sırasıyla takip et. Routine olarak çalıştığın i�
 
 **İSTİSNA:** Sadece gerçekten beklenmedik, önceki haberle çelişen veya sektörü sarsan yeni bir gelişme varsa (örn: "dün kapandığı söylenen stüdyo aslında satın alındı") dahil edilebilir.
 
-Bu adımı atlamadan bir sonraki adıma geçme. Eğer arşiv 7 günden az veri içeriyorsa, mevcut tüm dosyaları oku ve devam et.
+Bu adımı atlamadan bir sonraki adıma geçme.
 
 ### 2. Reddit'i Web Search Üzerinden Tara
 
@@ -62,7 +61,7 @@ Her search sonucundan:
 
 ### 3. Endüstri Sitelerini Web Search Üzerinden Tara
 
-`sources.md`'deki 5 endüstri sitesi için site adıyla arama yap. Her makaleden:
+`sources.md`'deki 4 endüstri sitesi için site adıyla arama yap. Her makaleden:
 
 - Snippet'ten başlık ve özet al
 - Tarihi kontrol et — 24 saatten eski olanları ele
@@ -159,7 +158,7 @@ Her madde için kaynağı belirt. Sadece gerçekten önemli olanları dahil et.
 
 ### Tekrar Yasağı (KRİTİK)
 - **Bölümler arası tekrar yasak:** Bir konu sadece TEK bir bölümde yer alabilir
-- **Günler arası tekrar yasak (7 gün):** Son 7 günün digest'lerinde bahsedilen herhangi bir oyun, şirket veya olay tekrar dahil edilemez
+- **Günler arası tekrar yasak (tüm arşiv):** Arşivdeki herhangi bir digest'te bahsedilen oyun, şirket veya olay tekrar dahil edilemez — eski dosyalar da kontrol edilir
 - **"Devam haberi" istisnası çok dar:** Sadece önceki haberle çelişen veya sektörü sarsan beklenmedik bir gelişme varsa dahil edilebilir
 
 ### Kapsam Dışı İçerikler
@@ -212,4 +211,4 @@ Bir içeriği digest'e dahil ederken şu soruyu sor: **"Bu, bir disruptive innov
 
 ---
 
-*Son güncelleme: 2026-04-16 (Web search migration + draft mode + archive sort logic)*
+*Son güncelleme: 2026-04-20 (Arşiv kontrolü tüm arşive genişletildi; endüstri site sayısı 4'e düştü)*
