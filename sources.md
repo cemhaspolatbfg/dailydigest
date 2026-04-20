@@ -97,10 +97,6 @@ Her subreddit için **3 farklı arama** yapılır. Toplam: 12 subreddit × 3 = 3
 - "deconstructoroffun analysis"
 - "deconstructoroffun trends mobile"
 
-**TouchArcade** (iOS oyun):
-- "toucharcade.com new release"
-- "toucharcade.com indie iOS"
-
 > **Beklenti:** Endüstri siteleri için günlük olarak çok az "kıvılcım" çıkar
 > (manşet tarzı haberler çoğu zaman kapsam dışı). Reddit aramaları
 > daha verimli olacak — bunu execution summary'de göz önünde bulundur.
@@ -132,4 +128,4 @@ Her subreddit için **3 farklı arama** yapılır. Toplam: 12 subreddit × 3 = 3
 
 ---
 
-*Son güncelleme: 2026-04-16 (Web search migration — RSS yolu çalışmadığı için geri dönüldü)*
+*Son güncelleme: 2026-04-20 (TouchArcade kaldırıldı — 2024'te operasyonlarını durdurmuştu)*
