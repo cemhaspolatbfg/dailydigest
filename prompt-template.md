@@ -31,14 +31,15 @@ Aşağıdaki adımları sırasıyla takip et. Routine olarak çalıştığın i�
    - Bahsedilen tüm **şirket/stüdyo isimleri** (örn: Apple, Activision)
    - Bahsedilen tüm **olaylar ve temalar** (örn: iOS 26 SDK zorunluluğu, konsol fiyat artışları)
 
-**TEKRAR YASAĞI:** Bu listede yer alan herhangi bir oyun, şirket veya olay bugünkü digest'te YENİDEN İŞLENEMEZ. Haberin açısı, aşaması veya detayı farklı olsa bile yasak geçerlidir.
+**TEKRAR YASAĞI:** Yasak olan şey **aynı spesifik haberin tekrarıdır**, şirket veya oyun adının tekrarı değil. Bir şirket veya oyun arşivde geçiyor diye o şirketin/oyunun her yeni haberi yasaklanmaz. Yasak sadece **birebir aynı olay veya gelişmenin** tekrar işlenmesidir.
 
-- "Nubby 15 Nisan'da çıkacak" → "Nubby bugün çıktı" → YASAK (aynı oyun)
-- "Warzone Mobile kapanıyor" → "Warzone Mobile sunucuları kapandı" → YASAK (aynı olay)
-- "iOS 26 SDK zorunlu" → "iOS 26 SDK deadline yaklaşıyor" → YASAK (aynı konu)
-- "PS5 zam duyuruldu" → "PS5 zammı yürürlüğe girdi" → YASAK (aynı olay)
+- "Sega restructuring yapıyor" → "Sega Crazy Taxi'de AI kullandı" → SERBEST (farklı haber)
+- "Metacore küçülme yapıyor" → "Metacore CEO'su evidence-based design üzerine konuştu" → SERBEST (farklı haber)
+- "Warzone Mobile kapanıyor" → "Warzone Mobile sunucuları kapandı" → YASAK (aynı olayın devamı)
+- "iOS 26 SDK zorunlu" → "iOS 26 SDK deadline yaklaşıyor" → YASAK (aynı konunun tekrarı)
+- "PS5 zam duyuruldu" → "PS5 zammı yürürlüğe girdi" → YASAK (aynı olayın devamı)
 
-**İSTİSNA:** Sadece gerçekten beklenmedik, önceki haberle çelişen veya sektörü sarsan yeni bir gelişme varsa (örn: "dün kapandığı söylenen stüdyo aslında satın alındı") dahil edilebilir.
+**Kural özeti:** Aynı şirketin/oyunun **yeni ve farklı bir haberi** varsa dahil et. Aynı olayın güncelleme/devam/takip haberi ise dahil etme.
 
 Bu adımı atlamadan bir sonraki adıma geçme.
 
@@ -158,8 +159,8 @@ Her madde için kaynağı belirt. Sadece gerçekten önemli olanları dahil et.
 
 ### Tekrar Yasağı (KRİTİK)
 - **Bölümler arası tekrar yasak:** Bir konu sadece TEK bir bölümde yer alabilir
-- **Günler arası tekrar yasak (tüm arşiv):** Arşivdeki herhangi bir digest'te bahsedilen oyun, şirket veya olay tekrar dahil edilemez — eski dosyalar da kontrol edilir
-- **"Devam haberi" istisnası çok dar:** Sadece önceki haberle çelişen veya sektörü sarsan beklenmedik bir gelişme varsa dahil edilebilir
+- **Günler arası tekrar yasak (olay bazlı):** Arşivde daha önce işlenmiş **aynı spesifik haber/olay** tekrar dahil edilemez. Ancak aynı şirketin veya oyunun **yeni ve farklı bir haberi** serbesttir
+- **Örnek:** Arşivde "Metacore küçülme" varsa, "Metacore CEO'su yeni strateji açıkladı" farklı bir haberdir ve dahil edilebilir
 
 ### Kapsam Dışı İçerikler
 - Kampanya, indirim, ön sipariş, fiyat düşüşü haberleri
